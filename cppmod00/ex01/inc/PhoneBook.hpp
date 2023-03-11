@@ -10,9 +10,11 @@
 #include <iomanip>
 #include "Contact.hpp"
 
-class PhoneBook {
-		Contact contacts[8];
+class PhoneBook
+{
+        Contact contacts[8];
 		int contact_count;
+        int index;
 	public:
 		PhoneBook();
 		void add_contact();

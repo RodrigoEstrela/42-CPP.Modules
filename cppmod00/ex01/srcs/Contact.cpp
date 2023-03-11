@@ -7,19 +7,11 @@
 
 Contact::Contact()
 {
-	this->first_name = "0";
-	this->last_name = "0";
-	this->nickname = "0";
-	this->phone_number = "0";
-	this->darkest_secret = "0";
-}
-
-// check if string is a number
-bool is_number(const std::string& s)
-{
-	std::string::const_iterator it = s.begin();
-	while (it != s.end() && std::isdigit(*it)) ++it;
-	return !s.empty() && it == s.end();
+	first_name = "";
+	last_name = "";
+	nickname = "";
+	phone_number = "";
+	darkest_secret = "";
 }
 
 void Contact::set_info()
@@ -47,4 +39,33 @@ void Contact::get_info()
 	std::cout << "Nickname: " << nickname << std::endl;
 	std::cout << "Phone number: " << phone_number << std::endl;
 	std::cout << "Darkest secret: " << darkest_secret << std::endl;
+}
+
+void Contact::show_info_line()
+{
+    std::string tmp;
+    if (first_name.length() > 10)
+    {
+        tmp = first_name.substr(0, 9);
+        tmp += ".";
+        std::cout << std::setw(10) << tmp << "|";
+    }
+    else
+        std::cout << std::setw(10) << first_name << "|";
+    if (last_name.length() > 10)
+    {
+        tmp = last_name.substr(0, 9);
+        tmp += ".";
+        std::cout << std::setw(10) << tmp << "|";
+    }
+    else
+        std::cout << std::setw(10) << last_name << "|";
+    if (nickname.length() > 10)
+    {
+        tmp = nickname.substr(0, 9);
+        tmp += ".";
+        std::cout << std::setw(10) << tmp << std::endl;
+    }
+    else
+        std::cout << std::setw(10) << last_name << std::endl;
 }

@@ -11,16 +11,16 @@
 
 class Contact
 {
-	std::string first_name,
-			last_name,
-			nickname,
-			phone_number,
-			darkest_secret;
-public:
-	Contact();
-	void get_info();
-	void set_info();
+	    std::string first_name,
+        last_name,
+        nickname,
+        phone_number,
+        darkest_secret;
+    public:
+	    Contact();
+	    void get_info();
+	    void set_info();
+        void show_info_line();
 };
-
 
 #endif //EX01_CONTACT_H

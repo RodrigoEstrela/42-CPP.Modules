@@ -11,4 +11,6 @@
 #include <iostream>
 #include <string>
 
+bool is_number(const std::string& s);
+
 #endif //EX01_EX01_H

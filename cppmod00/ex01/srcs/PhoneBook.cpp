@@ -7,47 +7,58 @@
 PhoneBook::PhoneBook()
 {
 	contact_count = 0;
+    index = 0;
 	for (int i = 0; i < 8; i++)
 		contacts[i] = Contact();
 }
 
 void PhoneBook::add_contact()
 {
-	if (contact_count < 8)
+    if (contact_count < 8)
+    {
+        contact_count++;
+    }
+	if (index < 8)
 	{
-		contacts[contact_count].set_info();
-		contact_count++;
+		contacts[index].set_info();
+        index++;
 	}
 	else
 	{
-		contact_count = 0;
-		contacts[contact_count].set_info();
-		contact_count++;
+		index = 0;
+		contacts[index].set_info();
 	}
 }
 
 void PhoneBook::search_contact()
 {
-	std::string input;
-	int index = 0;
+    if (contact_count == 0)
+    {
+        std::cout << "No contacts to search" << std::endl;
+        return;
+    }
+    std::cout << std::setw(10) << "Index" << "|";
+    std::cout << std::setw(10) << "First Name" << "|";
+    std::cout << std::setw(10) << "Last Name" << "|";
+    std::cout << std::setw(10) << "Nickname" << std::endl;
 
-	if (contact_count == 0)
-	{
-		std::cout << "No contacts to search" << std::endl;
-		return;
-	}
-	std::cout << std::setw(10) << "Index" << "|";
-	std::cout << std::setw(10) << "First Name" << "|";
-	std::cout << std::setw(10) << "Last Name" << "|";
-	std::cout << std::setw(10) << "Nickname" << std::endl;
-	for (int i = 0; i < contact_count; i++)
-	{
-		std::cout << std::setw(10) << i << "|";
-		contacts[i].get_info();
-	}
-	std::cout << "Enter index: "; std::cin >> input;
-	if ((index - 48) >= 0 && (index - 48) < contact_count)
-		contacts[index - 48].get_info();
-	else
-		std::cout << "Invalid index" << std::endl;
+    for (int i = 0; i < contact_count; i++)
+    {
+        std::cout << std::setw(10) << i << "|";
+        contacts[i].show_info_line();
+    }
+    int idx;
+    std::cout << "Enter index: "; std::cin >> idx;
+    if (std::cin.fail())
+    {
+        std::cin.clear();
+        std::cin.ignore(256,'\n');
+        std::cout << "Invalid index" << std::endl;
+        return;
+    }
+    if (idx >= 0 && idx < contact_count)
+        contacts[idx].get_info();
+    else
+        std::cout << "Invalid index" << std::endl;
+    return;
 }

@@ -4,9 +4,8 @@
 int main(int ac, char **av)
 {
 	int i = 1;
-	std::string str = "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	if (ac == 1)
-		std::cout << str;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	while (i < ac)
 	{
 		for (int j = 0; av[i][j]; j++)

@@ -60,5 +60,4 @@ void PhoneBook::search_contact()
         contacts[idx].get_info();
     else
         std::cout << "Invalid index" << std::endl;
-    return;
 }

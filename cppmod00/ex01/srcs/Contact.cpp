@@ -67,5 +67,5 @@ void Contact::show_info_line()
         std::cout << std::setw(10) << tmp << std::endl;
     }
     else
-        std::cout << std::setw(10) << last_name << std::endl;
+        std::cout << std::setw(10) << nickname << std::endl;
 }

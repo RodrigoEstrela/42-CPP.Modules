@@ -12,5 +12,7 @@ int main()
     std::cout << "INFO" << std::endl; karen.complain("INFO");
     std::cout << "WARNING" << std::endl; karen.complain("WARNING");
     std::cout << "ERROR" << std::endl; karen.complain("ERROR");
-    return 0;
+    std::cout << "RANDOM" << std::endl; karen.complain("RANDOM");
+
+    std::cout << std::endl; return 0;
 }

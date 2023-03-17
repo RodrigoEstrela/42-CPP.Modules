@@ -6,6 +6,7 @@
 #define EX00_FIXED_H
 
 #include <iostream>
+#include <iomanip>
 
 class Fixed
 {

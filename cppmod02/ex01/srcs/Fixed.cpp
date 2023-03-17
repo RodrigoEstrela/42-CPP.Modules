@@ -24,7 +24,7 @@ Fixed::Fixed(const int integer)
 Fixed::Fixed(const float floating_point)
 {
 	std::cout << "Float constructor called" << std::endl;
- 	this->fixed_point = (int)(floating_point * (1 << this->fractional_bits));
+ 	this->fixed_point = roundf(floating_point * (1 << this->fractional_bits));
 }
 
 Fixed &Fixed::operator=(const Fixed &copy)
@@ -46,7 +46,7 @@ void Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat() const
 {
-	return (float)this->fixed_point / (1 << this->fractional_bits);
+	return roundf(this->fixed_point) / (1 << this->fractional_bits);
 }
 
 int Fixed::toInt() const

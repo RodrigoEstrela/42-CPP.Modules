@@ -17,5 +17,4 @@ class Brain
 		~Brain();
 };
 
-
 #endif //INC_42_CPP_MODULES_BRAIN_H

@@ -6,16 +6,17 @@
 #define INC_42_CPP_MODULES_CAT_H
 
 #include"Animal.h"
+#include"Brain.h"
 
 class Cat : public Animal
 {
 	private:
-		Brain
+		Brain *Brn;
 	public:
 		Cat();
 		Cat(Cat const &other);
 		Cat &operator=(Cat const &other);
-		~Cat();
+		virtual ~Cat();
 
 		void makeSound() const;
 };

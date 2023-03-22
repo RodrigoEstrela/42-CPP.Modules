@@ -5,39 +5,35 @@
 #include"../inc/Animal.h"
 #include"../inc/Cat.h"
 #include"../inc/Dog.h"
-#include"../inc/WrongAnimal.h"
-#include"../inc/WrongCat.h"
 
 int main()
 {
-	const Animal *meta = new Animal();
-	meta->makeSound();
-	std::cout << meta->getType() << " " << std::endl;
-	delete meta;
-	std::cout << std::endl;
+    Animal **animais = new Animal *[6];
+    for (int i = 0; i < 3; i++)
+    {
+        std::cout << "Dog #" << i + 1 << "============" << std::endl;
+        animais[i] = new Dog();
+    }
+    std::cout << std::endl;
+    for (int i = 3; i < 6; i++)
+    {
+        std::cout << "Cat #" << i - 2 << "============" << std::endl;
+        animais[i] = new Cat();
+    }
+    std::cout << std::endl;
+    for (int i = 0; i < 6; i++)
+    {
+        std::cout << "Deletion #" << i + 1 << "============" << std::endl;
+        delete animais[i];
+    }
+    delete[] animais;
+    std::cout << std::endl;
 
-	const Animal *i = new Cat();
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	delete i;
-	std::cout << std::endl;
-
-	const Animal *j = new Dog();
-	std::cout << j->getType() << " " << std::endl;
-	j->makeSound();
-	delete j;
-	std::cout << std::endl;
-
-	const WrongAnimal *w = new WrongAnimal();
-	w->makeSound();
-	std::cout << w->getType() << " " << std::endl;
-	delete w;
-	std::cout << std::endl;
-
-	const WrongCat *wc = new WrongCat();
-	wc->makeSound();
-	std::cout << wc->getType() << " " << std::endl;
-	delete wc;
-
-	return 0;
+    Dog cao1;
+    {
+        std::cout << std::endl;
+        Dog cao2 = cao1;
+    }
+    std::cout << std::endl;
+    return 0;
 }

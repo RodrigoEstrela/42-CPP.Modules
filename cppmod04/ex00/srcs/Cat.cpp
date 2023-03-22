@@ -12,12 +12,14 @@ Cat::Cat()
 
 Cat::Cat(Cat const &other)
 {
+    std::cout << "Cat copy constructor called" << std::endl;
 	*this = other;
 	std::cout << "Animal " << this->getType() << " copied." << std::endl;
 }
 
 Cat &Cat::operator=(Cat const &other)
 {
+    std::cout << "Cat assignation operator called" << std::endl;
 	type = other.type;
 	return *this;
 }

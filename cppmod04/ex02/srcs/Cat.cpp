@@ -13,14 +13,22 @@ Cat::Cat()
 
 Cat::Cat(Cat const &other) : Animal()
 {
+	std::cout << "Cat copy constructor called" << std::endl;
+	this->Brn = NULL;
 	*this = other;
 	std::cout << "Animal " << this->getType() << " copied." << std::endl;
 }
 
 Cat &Cat::operator=(Cat const &other)
 {
-	type = other.type;
-    Brn = other.Brn;
+	std::cout << "Cat assignation operator called" << std::endl;
+	if (this != &other)
+	{
+		type = other.type;
+		if (this->Brn)
+			delete Brn;
+		this->Brn = new Brain(*other.Brn);
+	}
 	return *this;
 }
 

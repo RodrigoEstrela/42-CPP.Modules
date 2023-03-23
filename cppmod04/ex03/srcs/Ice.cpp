@@ -6,6 +6,7 @@
 
 Ice::Ice() : AMateria("ice")
 {
+	std::cout << "Ice created." << std::endl;
 }
 
 Ice::Ice(Ice const &other) : AMateria(other)

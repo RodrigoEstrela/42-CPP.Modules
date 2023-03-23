@@ -14,7 +14,6 @@ class Character : public ICharacter
 	private:
 		std::string name;
 		AMateria *inventory[4];
-		AMateria *disposable;
 	public:
 		Character(std::string const &name);
 		Character(Character const &other);
@@ -24,7 +23,6 @@ class Character : public ICharacter
 		void equip(AMateria *m);
 		void unequip(int idx);
 		void use(int idx, ICharacter &target);
-		void disposeDisposable();
 };
 
 

@@ -6,18 +6,17 @@
 
 Character::Character(std::string const &name) : name(name)
 {
+	std::cout << "Character " << name << " created!" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		inventory[i] = NULL;
 	}
-	disposable = NULL;
 }
 
 // deep copy
-Character::Character(Character const &other)
+Character::Character(Character const &other) : name(other.name), inventory()
 {
 	*inventory = NULL;
-	disposable = NULL;
 	*this = other;
 }
 
@@ -36,6 +35,7 @@ Character &Character::operator=(Character const &other)
 				inventory[i] = NULL;
 		}
 	}
+	std::cout << "Character " << name << " copied!" << std::endl;
 	return *this;
 }
 
@@ -46,6 +46,7 @@ Character::~Character()
 		if (inventory[i])
 			delete inventory[i];
 	}
+	std::cout << "Character " << name << " destroyed!" << std::endl;
 }
 
 std::string const &Character::getName() const
@@ -68,27 +69,28 @@ void Character::equip(AMateria *m)
 void Character::unequip(int idx)
 {
 	if (idx < 0 || idx > 3)
+	{
+		std::cout << "unequip() failed: Index out of range!" << std::endl;
 		return;
+	}
 	if (inventory[idx])
 	{
-		disposable = inventory[idx];
-		inventory[idx] = NULL;
+		inventory[idx] = 0;
 	}
+	else
+		std::cout << "unequip() failed: No materia at index: " << idx << std::endl;
 }
 
-void Character::disposeDisposable()
-{
-	if (disposable)
-	{
-		delete disposable;
-		disposable = NULL;
-	}
-}
 
 void Character::use(int idx, ICharacter &target)
 {
 	if (idx < 0 || idx > 3)
+	{
+		std::cout << "use() failed: Index out of range!" << std::endl;
 		return;
+	}
 	if (inventory[idx])
 		inventory[idx]->use(target);
+	else
+		std::cout << "use() failed: No materia at index: " << idx << std::endl;
 }

@@ -22,5 +22,4 @@ class MateriaSource : public IMateriaSource
 		AMateria* createMateria(std::string const & type);
 };
 
-
 #endif //INC_42_CPP_MODULES_MATERIASOURCE_H

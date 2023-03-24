@@ -3,7 +3,7 @@
 //
 
 #include <cstdlib>
-#include "../inc/ClapTrap.h"
+#include "../inc/ClapTrap.hpp"
 
 ClapTrap::ClapTrap()
 {

@@ -2,7 +2,7 @@
 // Created by rdas-nev on 17-03-2023.
 //
 
-#include "../inc/ScavTrap.h"
+#include "../inc/ScavTrap.hpp"
 
 ScavTrap::ScavTrap() : ClapTrap()
 {

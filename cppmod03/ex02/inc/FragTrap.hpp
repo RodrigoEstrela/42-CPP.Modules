@@ -5,7 +5,7 @@
 #ifndef EX02_FRAGTRAP_H
 #define EX02_FRAGTRAP_H
 
-#include "../inc/ClapTrap.h"
+#include "../inc/ClapTrap.hpp"
 
 class FragTrap : public ClapTrap
 {

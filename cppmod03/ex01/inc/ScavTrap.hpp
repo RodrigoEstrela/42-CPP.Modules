@@ -5,7 +5,7 @@
 #ifndef EX01_SCAVTRAP_H
 #define EX01_SCAVTRAP_H
 
-#include "../inc/ClapTrap.h"
+#include "../inc/ClapTrap.hpp"
 #include "iostream"
 
 class ScavTrap : public ClapTrap

@@ -2,7 +2,7 @@
 // Created by rdas-nev on 17-03-2023.
 //
 
-#include "../inc/FragTrap.h"
+#include "../inc/FragTrap.hpp"
 
 FragTrap::FragTrap()
 {

@@ -2,9 +2,9 @@
 // Created by rdas-nev on 17-03-2023.
 //
 
-#include "../inc/ClapTrap.h"
-#include "../inc/ScavTrap.h"
-#include "../inc/FragTrap.h"
+#include "../inc/ClapTrap.hpp"
+#include "../inc/ScavTrap.hpp"
+#include "../inc/FragTrap.hpp"
 
 int main()
 {
@@ -15,7 +15,10 @@ int main()
     clapTrap1.takeDamage(10);
     clapTrap1.beRepaired(10);
     for (int i = 0; i < 10; i++)
-        clapTrap1.beRepaired(10);
+	{
+		clapTrap1.beRepaired(10);
+	}
+	clapTrap1.takeDamage(10);
 
     ScavTrap scavTrap1("AmazingScavThatTraps");
 
@@ -28,6 +31,7 @@ int main()
         std::cout << i << ": ";
         scavTrap1.beRepaired(100);
     }
+	scavTrap1.takeDamage(100);
     scavTrap1.guardGate();
 
     FragTrap fragTrap1("AmazingFragThatTraps");
@@ -41,6 +45,6 @@ int main()
         std::cout << i << ": ";
         fragTrap1.beRepaired(100);
     }
-
+	fragTrap1.takeDamage(100);
     fragTrap1.highFivesGuys();
 }

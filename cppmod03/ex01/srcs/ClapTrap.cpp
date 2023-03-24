@@ -2,7 +2,7 @@
 // Created by rdas-nev on 17-03-2023.
 //
 
-#include "../inc/ClapTrap.h"
+#include "../inc/ClapTrap.hpp"
 
 ClapTrap::ClapTrap()
 {

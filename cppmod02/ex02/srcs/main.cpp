@@ -2,7 +2,7 @@
 // Created by rdas-nev on 3/15/23.
 //
 
-#include "../inc/Fixed.h"
+#include "../inc/Fixed.hpp"
 
 int main()
 {

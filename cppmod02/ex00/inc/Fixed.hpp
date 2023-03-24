@@ -20,5 +20,4 @@ class Fixed
 		~Fixed();
 };
 
-
 #endif //EX00_FIXED_H

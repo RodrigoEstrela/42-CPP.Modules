@@ -2,7 +2,7 @@
 // Created by rdas-nev on 3/23/23.
 //
 
-#include "../inc/Character.h"
+#include "../inc/Character.hpp"
 
 Character::Character(std::string const &name) : name(name)
 {
@@ -69,28 +69,18 @@ void Character::equip(AMateria *m)
 void Character::unequip(int idx)
 {
 	if (idx < 0 || idx > 3)
-	{
-		std::cout << "unequip() failed: Index out of range!" << std::endl;
 		return;
-	}
 	if (inventory[idx])
 	{
 		inventory[idx] = 0;
 	}
-	else
-		std::cout << "unequip() failed: No materia at index: " << idx << std::endl;
 }
 
 
 void Character::use(int idx, ICharacter &target)
 {
 	if (idx < 0 || idx > 3)
-	{
-		std::cout << "use() failed: Index out of range!" << std::endl;
 		return;
-	}
 	if (inventory[idx])
 		inventory[idx]->use(target);
-	else
-		std::cout << "use() failed: No materia at index: " << idx << std::endl;
 }

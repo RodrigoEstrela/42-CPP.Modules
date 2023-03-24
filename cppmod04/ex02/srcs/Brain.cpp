@@ -2,7 +2,7 @@
 // Created by rdas-nev on 3/21/23.
 //
 
-#include "../inc/Brain.h"
+#include "../inc/Brain.hpp"
 
 Brain::Brain()
 {

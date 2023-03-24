@@ -2,7 +2,7 @@
 // Created by rdas-nev on 3/21/23.
 //
 
-#include "../inc/Dog.h"
+#include "../inc/Dog.hpp"
 
 Dog::Dog()
 {

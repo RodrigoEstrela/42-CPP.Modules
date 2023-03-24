@@ -2,12 +2,12 @@
 // Created by rdas-nev on 3/23/23.
 //
 
-#ifndef INC_42_CPP_MODULES_CHARACTER_H
-#define INC_42_CPP_MODULES_CHARACTER_H
+#ifndef INC_42_CPP_MODULES_CHARACTER_HPP
+#define INC_42_CPP_MODULES_CHARACTER_HPP
 
 #include <iostream>
-#include "ICharacter.h"
-#include "AMateria.h"
+#include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 class Character : public ICharacter
 {
@@ -26,4 +26,4 @@ class Character : public ICharacter
 };
 
 
-#endif //INC_42_CPP_MODULES_CHARACTER_H
+#endif //INC_42_CPP_MODULES_CHARACTER_HPP

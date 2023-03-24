@@ -2,11 +2,11 @@
 // Created by rdas-nev on 3/23/23.
 //
 
-#ifndef INC_42_CPP_MODULES_AMATERIA_H
-#define INC_42_CPP_MODULES_AMATERIA_H
+#ifndef INC_42_CPP_MODULES_AMATERIA_HPP
+#define INC_42_CPP_MODULES_AMATERIA_HPP
 
 #include<iostream>
-#include"ICharacter.h"
+#include"ICharacter.hpp"
 
 class ICharacter;
 
@@ -26,4 +26,4 @@ class AMateria
 };
 
 
-#endif //INC_42_CPP_MODULES_AMATERIA_H
+#endif //INC_42_CPP_MODULES_AMATERIA_HPP

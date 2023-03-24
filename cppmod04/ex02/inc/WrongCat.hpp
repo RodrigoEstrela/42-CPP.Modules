@@ -5,7 +5,7 @@
 #ifndef INC_42_CPP_MODULES_WRONGCAT_H
 #define INC_42_CPP_MODULES_WRONGCAT_H
 
-#include"WrongAnimal.h"
+#include"WrongAnimal.hpp"
 
 class WrongCat : public WrongAnimal
 {

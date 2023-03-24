@@ -2,11 +2,11 @@
 // Created by rdas-nev on 3/23/23.
 //
 
-#ifndef INC_42_CPP_MODULES_CURE_H
-#define INC_42_CPP_MODULES_CURE_H
+#ifndef INC_42_CPP_MODULES_CURE_HPP
+#define INC_42_CPP_MODULES_CURE_HPP
 
 #include <iostream>
-#include "AMateria.h"
+#include "AMateria.hpp"
 
 class Cure : public AMateria
 {
@@ -19,4 +19,4 @@ class Cure : public AMateria
 		void use(ICharacter& target);
 };
 
-#endif //INC_42_CPP_MODULES_CURE_H
+#endif //INC_42_CPP_MODULES_CURE_HPP

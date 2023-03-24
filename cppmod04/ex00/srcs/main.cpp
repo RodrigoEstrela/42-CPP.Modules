@@ -2,11 +2,11 @@
 // Created by rdas-nev on 3/21/23.
 //
 
-#include"../inc/Animal.h"
-#include"../inc/Cat.h"
-#include"../inc/Dog.h"
-#include"../inc/WrongAnimal.h"
-#include"../inc/WrongCat.h"
+#include"../inc/Animal.hpp"
+#include"../inc/Cat.hpp"
+#include"../inc/Dog.hpp"
+#include"../inc/WrongAnimal.hpp"
+#include"../inc/WrongCat.hpp"
 
 int main()
 {

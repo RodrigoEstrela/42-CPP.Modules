@@ -2,8 +2,8 @@
 // Created by rdas-nev on 3/21/23.
 //
 
-#ifndef INC_42_CPP_MODULES_WRONGANIMAL_H
-#define INC_42_CPP_MODULES_WRONGANIMAL_H
+#ifndef INC_42_CPP_MODULES_WRONGANIMAL_HPP
+#define INC_42_CPP_MODULES_WRONGANIMAL_HPP
 
 #include<iostream>
 
@@ -21,4 +21,4 @@ class WrongAnimal
 		void makeSound() const;
 };
 
-#endif //INC_42_CPP_MODULES_WRONGANIMAL_H
+#endif //INC_42_CPP_MODULES_WRONGANIMAL_HPP

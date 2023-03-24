@@ -5,8 +5,8 @@
 #ifndef INC_42_CPP_MODULES_CAT_H
 #define INC_42_CPP_MODULES_CAT_H
 
-#include"Animal.h"
-#include"Brain.h"
+#include"Animal.hpp"
+#include"Brain.hpp"
 
 class Cat : public Animal
 {

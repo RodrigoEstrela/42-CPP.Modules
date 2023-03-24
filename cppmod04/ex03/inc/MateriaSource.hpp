@@ -2,11 +2,11 @@
 // Created by rdas-nev on 3/23/23.
 //
 
-#ifndef INC_42_CPP_MODULES_MATERIASOURCE_H
-#define INC_42_CPP_MODULES_MATERIASOURCE_H
+#ifndef INC_42_CPP_MODULES_MATERIASOURCE_HPP
+#define INC_42_CPP_MODULES_MATERIASOURCE_HPP
 
-#include "IMateriaSource.h"
-#include "AMateria.h"
+#include "IMateriaSource.hpp"
+#include "AMateria.hpp"
 #include <iostream>
 
 class MateriaSource : public IMateriaSource
@@ -22,4 +22,4 @@ class MateriaSource : public IMateriaSource
 		AMateria* createMateria(std::string const & type);
 };
 
-#endif //INC_42_CPP_MODULES_MATERIASOURCE_H
+#endif //INC_42_CPP_MODULES_MATERIASOURCE_HPP

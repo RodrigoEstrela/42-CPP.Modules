@@ -2,7 +2,7 @@
 // Created by rdas-nev on 3/23/23.
 //
 
-#include "../inc/Cure.h"
+#include "../inc/Cure.hpp"
 
 Cure::Cure() : AMateria("cure")
 {

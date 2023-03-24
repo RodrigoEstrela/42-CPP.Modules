@@ -2,7 +2,7 @@
 // Created by rdas-nev on 3/21/23.
 //
 
-#include "../inc/Animal.h"
+#include "../inc/Animal.hpp"
 
 Animal::Animal()
 {

@@ -2,11 +2,11 @@
 // Created by rdas-nev on 3/23/23.
 //
 
-#ifndef INC_42_CPP_MODULES_ICHARACTER_H
-#define INC_42_CPP_MODULES_ICHARACTER_H
+#ifndef INC_42_CPP_MODULES_ICHARACTER_HPP
+#define INC_42_CPP_MODULES_ICHARACTER_HPP
 
 #include<iostream>
-#include"AMateria.h"
+#include"AMateria.hpp"
 
 class AMateria;
 
@@ -20,4 +20,4 @@ class ICharacter
 		virtual void use(int idx, ICharacter& target) = 0;
 };
 
-#endif //INC_42_CPP_MODULES_ICHARACTER_H
+#endif //INC_42_CPP_MODULES_ICHARACTER_HPP

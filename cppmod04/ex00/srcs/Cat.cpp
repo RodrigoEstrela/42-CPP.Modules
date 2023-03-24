@@ -2,7 +2,7 @@
 // Created by rdas-nev on 3/21/23.
 //
 
-#include "../inc/Cat.h"
+#include "../inc/Cat.hpp"
 
 Cat::Cat()
 {

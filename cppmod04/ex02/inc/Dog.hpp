@@ -5,8 +5,8 @@
 #ifndef INC_42_CPP_MODULES_DOG_H
 #define INC_42_CPP_MODULES_DOG_H
 
-#include"Animal.h"
-#include"Brain.h"
+#include"Animal.hpp"
+#include"Brain.hpp"
 
 class Dog : public Animal
 {

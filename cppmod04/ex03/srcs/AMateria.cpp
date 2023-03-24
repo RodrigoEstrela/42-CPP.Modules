@@ -2,7 +2,7 @@
 // Created by rdas-nev on 3/23/23.
 //
 
-#include "../inc/AMateria.h"
+#include "../inc/AMateria.hpp"
 
 AMateria::AMateria(std::string const &type) : type(type)
 {

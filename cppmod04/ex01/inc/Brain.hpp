@@ -2,8 +2,8 @@
 // Created by rdas-nev on 3/21/23.
 //
 
-#ifndef INC_42_CPP_MODULES_BRAIN_H
-#define INC_42_CPP_MODULES_BRAIN_H
+#ifndef INC_42_CPP_MODULES_BRAIN_HPP
+#define INC_42_CPP_MODULES_BRAIN_HPP
 
 #include<iostream>
 
@@ -17,4 +17,4 @@ class Brain
 		~Brain();
 };
 
-#endif //INC_42_CPP_MODULES_BRAIN_H
+#endif //INC_42_CPP_MODULES_BRAIN_HPP

@@ -2,7 +2,7 @@
 // Created by rdas-nev on 3/23/23.
 //
 
-#include"../inc/interfaces.h"
+#include"../inc/interfaces.hpp"
 
 int main()
 {
@@ -27,14 +27,26 @@ int main()
 	std::cout << std::endl;
 
 	// unequip, delete and test use() again
+	std::cout << "unequip, delete materia and test use() again." << std::endl;
 	me->unequip(0);
 	delete tmp2;
 	me->use(0, *bob);
 	std::cout << std::endl;
 
 	// use and unequip out of range
+	std::cout << "use and unequip out of range." << std::endl;
 	me->use(10, *bob);
 	me->unequip(10);
+	std::cout << std::endl;
+
+	// equip too many materia
+	std::cout << "equip too many materia." << std::endl;
+	for (int i = 0; i <= 3; i++)
+	{
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
+	}
+	delete tmp;
 	std::cout << std::endl;
 
 	// copy of bob

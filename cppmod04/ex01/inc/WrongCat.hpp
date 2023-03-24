@@ -2,10 +2,10 @@
 // Created by rdas-nev on 3/21/23.
 //
 
-#ifndef INC_42_CPP_MODULES_WRONGCAT_H
-#define INC_42_CPP_MODULES_WRONGCAT_H
+#ifndef INC_42_CPP_MODULES_WRONGCAT_HPP
+#define INC_42_CPP_MODULES_WRONGCAT_HPP
 
-#include"WrongAnimal.h"
+#include"WrongAnimal.hpp"
 
 class WrongCat : public WrongAnimal
 {
@@ -17,4 +17,4 @@ class WrongCat : public WrongAnimal
 };
 
 
-#endif //INC_42_CPP_MODULES_WRONGCAT_H
+#endif //INC_42_CPP_MODULES_WRONGCAT_HPP

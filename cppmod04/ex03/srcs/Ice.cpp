@@ -2,7 +2,7 @@
 // Created by rdas-nev on 3/23/23.
 //
 
-#include "../inc/Ice.h"
+#include "../inc/Ice.hpp"
 
 Ice::Ice() : AMateria("ice")
 {

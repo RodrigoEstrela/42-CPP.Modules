@@ -2,11 +2,11 @@
 // Created by rdas-nev on 3/23/23.
 //
 
-#ifndef INC_42_CPP_MODULES_IMATERIASOURCE_H
-#define INC_42_CPP_MODULES_IMATERIASOURCE_H
+#ifndef INC_42_CPP_MODULES_IMATERIASOURCE_HPP
+#define INC_42_CPP_MODULES_IMATERIASOURCE_HPP
 
 #include<iostream>
-#include"AMateria.h"
+#include"AMateria.hpp"
 
 class IMateriaSource
 {
@@ -17,4 +17,4 @@ class IMateriaSource
 };
 
 
-#endif //INC_42_CPP_MODULES_IMATERIASOURCE_H
+#endif //INC_42_CPP_MODULES_IMATERIASOURCE_HPP

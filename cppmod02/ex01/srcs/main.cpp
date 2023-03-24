@@ -12,6 +12,10 @@ int main(void)
 	Fixed const d(b);
 	a = Fixed(1234.4321f);
 
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	std::cout << std::endl;
+
     std::cout << "a is " << a << std::endl;
     std::cout << "b is " << b << std::endl;
     std::cout << "c is " << c << std::endl;

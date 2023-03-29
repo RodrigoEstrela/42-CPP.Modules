@@ -14,10 +14,16 @@ Character::Character(std::string const &name) : name(name)
 }
 
 // deep copy
-Character::Character(Character const &other) : name(other.name), inventory()
+Character::Character(Character const &other) : name(other.name)
 {
-	*inventory = NULL;
-	*this = other;
+	std::cout << "Character " << name << " copied!" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (other.inventory[i])
+			inventory[i] = other.inventory[i]->clone();
+		else
+			inventory[i] = NULL;
+	}
 }
 
 Character &Character::operator=(Character const &other)

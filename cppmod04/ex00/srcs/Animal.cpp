@@ -14,7 +14,6 @@ Animal::Animal(Animal const &other)
 {
     std::cout << "Animal " << type << " copied." << std::endl;
 	*this = other;
-	std::cout << "Animal " << type << " copied." << std::endl;
 }
 
 Animal &Animal::operator=(Animal const &other)

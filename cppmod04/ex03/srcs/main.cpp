@@ -49,10 +49,17 @@ int main()
 	delete tmp;
 	std::cout << std::endl;
 
-	// copy of bob
-	Character original("original");
+	// deep copy
+	Character *original = new Character("original");
 	{
-		Character copy = original;
+		IMateriaSource* src1 = new MateriaSource();
+		src1->learnMateria(new Ice());
+		AMateria *tmp1;
+		tmp1 = src1->createMateria("ice"); original->equip(tmp1);
+		Character copy = *original;
+		delete original;
+		copy.use(0, *bob);
+		delete src1;
 	}
 	std::cout << std::endl;
 

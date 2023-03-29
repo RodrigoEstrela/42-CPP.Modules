@@ -6,6 +6,9 @@
 #define INC_42_CPP_MODULES_BUREAUCRAT_H
 
 #include <iostream>
+#include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat
 {
@@ -13,7 +16,7 @@ class Bureaucrat
 		const std::string name;
 		int grade;
 	public:
-	//  Orthodox Canonical AForm
+	//  Orthodox Canonical Form
 		Bureaucrat();
 		Bureaucrat(Bureaucrat const &other);
 		Bureaucrat &operator=(Bureaucrat const &other);
@@ -26,6 +29,8 @@ class Bureaucrat
 	// Increment / Decrement
 		void incrementGrade();
 		void decrementGrade();
+	// Change AForm status
+		void signForm(AForm &f) const;
 	// Class Exceptions
 		class GradeTooHighException : std::exception
 		{

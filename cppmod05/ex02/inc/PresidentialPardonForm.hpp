@@ -1,0 +1,14 @@
+//
+// Created by rdas-nev on 3/29/23.
+//
+
+#ifndef INC_42_CPP_MODULES_PRESIDENTIALPARDONFORM_H
+#define INC_42_CPP_MODULES_PRESIDENTIALPARDONFORM_H
+
+
+class PresidentialPardonForm {
+
+};
+
+
+#endif //INC_42_CPP_MODULES_PRESIDENTIALPARDONFORM_H

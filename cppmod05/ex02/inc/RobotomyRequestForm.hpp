@@ -1,0 +1,14 @@
+//
+// Created by rdas-nev on 3/29/23.
+//
+
+#ifndef INC_42_CPP_MODULES_ROBOTOMYREQUESTFORM_H
+#define INC_42_CPP_MODULES_ROBOTOMYREQUESTFORM_H
+
+
+class RobotomyRequestForm {
+
+};
+
+
+#endif //INC_42_CPP_MODULES_ROBOTOMYREQUESTFORM_H

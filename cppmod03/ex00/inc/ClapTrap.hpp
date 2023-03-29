@@ -26,5 +26,4 @@ class ClapTrap
         void beRepaired(unsigned int amount);
 };
 
-
 #endif //EX00_CLAPTRAP_H

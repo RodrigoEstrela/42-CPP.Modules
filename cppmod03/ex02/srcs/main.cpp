@@ -36,7 +36,7 @@ int main()
 
     FragTrap fragTrap1("AmazingFragThatTraps");
 
-    fragTrap1.attack("Some other other random dude");
+    fragTrap1.attack("Some random dude");
     fragTrap1.takeDamage(100);
     fragTrap1.takeDamage(100);
     fragTrap1.beRepaired(100);

@@ -8,6 +8,8 @@
 #include <iostream>
 #include "Form.hpp"
 
+class Form;
+
 class Bureaucrat
 {
 	private:
@@ -28,7 +30,7 @@ class Bureaucrat
 		void incrementGrade();
 		void decrementGrade();
 	// Change Form status
-		void signForm(int required_grade) const;
+		void signForm(Form &f) const;
 	// Class Exceptions
 		class GradeTooHighException : std::exception
 		{

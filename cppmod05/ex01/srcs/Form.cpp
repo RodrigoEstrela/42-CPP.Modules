@@ -31,6 +31,18 @@ Form::~Form()
 }
 // =============================================================================
 
+// Constructor with input ======================================================
+Form::Form(std::string nome, int gsign, int gexec) : name(nome),
+grade_sign(gsign), grade_exec(gexec)
+{
+	if (gsign < 1 || gexec < 1)
+		throw Form::GradeTooHighException();
+	else if (gsign > 150 || gexec > 150)
+		throw Form::GradeTooLowException();
+	is_signed = 0;
+}
+// =============================================================================
+
 // Getters =====================================================================
 std::string Form::getName() const
 {
@@ -56,16 +68,10 @@ int Form::getRequiredExecGrade() const
 // Change Status Method ========================================================
 void Form::beSigned(Bureaucrat const &b)
 {
-	try
-	{
-		b.signForm(this->getRequiredSigningGrade());
-		this->is_signed = 1;
-		std::cout << b.getName() << " signed " << this->getName();
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
+	if (b.getGrade() > this->getRequiredSigningGrade())
 		throw Form::GradeTooLowException();
-	}
+	else
+		this->is_signed = 1;
 }
 // =============================================================================
 
@@ -84,10 +90,9 @@ const char *Form::GradeTooLowException::what() const throw()
 // Operator << overload ========================================================
 std::ostream &operator<<(std::ostream &out, const Form &f)
 {
-	out << "Form: " << f.getName() << " attributes are:\n" <<
-	"Status: " << f.getStatus() <<
-	"Required grade for signing: " << f.getRequiredSigningGrade() <<
-	"Required grade for executing: " << f.getRequiredExecGrade() << std::endl;
+	out << "Name: " << f.getName() << std::endl << "Status: " << f.getStatus() << std::endl <<
+	"Required grade for signing: " << f.getRequiredSigningGrade() << std::endl <<
+	"Required grade for executing: " << f.getRequiredExecGrade();
 	return out;
 }
 // =============================================================================

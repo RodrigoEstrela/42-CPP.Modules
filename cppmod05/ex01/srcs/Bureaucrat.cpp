@@ -73,15 +73,22 @@ void	Bureaucrat::decrementGrade()
 // =============================================================================
 
 // Change Form status ==========================================================
-void Bureaucrat::signForm(int required_grade) const
+void Bureaucrat::signForm(Form &f) const
 {
-	if (this->getGrade() > required_grade)
-		throw Bureaucrat::GradeTooLowException();
+	try
+	{
+		f.beSigned(*this);
+		std::cout << this->getName() << " signed " << f.getName() << std::endl;
+	}
+	catch (Form::GradeTooLowException &e)
+	{
+		std::cout << this->getName() << " couldn't sign " << f.getName() <<
+		" because " << e.what() << std::endl;
+	}
 }
 // =============================================================================
 
 // Class Exceptions ============================================================
-
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return "Grade Too High!";
@@ -96,7 +103,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 // Operator << overload ========================================================
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
 {
-	out << bureaucrat.getName() << "'s grade is: " << bureaucrat.getGrade() << "." << std::endl;
+	out << bureaucrat.getName() << "'s grade is: " << bureaucrat.getGrade() << ".";
 	return out;
 }
 // =============================================================================

@@ -23,6 +23,8 @@ class Form
 		Form(Form const &other);
 		Form &operator=(Form const &other);
 		~Form();
+	// Constructor with input
+		Form(std::string nome, int gsign, int gexec);
 	// Getters
 		std::string getName() const;
 		bool getStatus() const;

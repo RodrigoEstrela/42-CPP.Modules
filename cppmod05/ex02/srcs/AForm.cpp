@@ -7,7 +7,7 @@
 // Orthodox Canonical AForm =====================================================
 AForm::AForm() : name("formulary"), grade_sign(35), grade_exec(15)
 {
-	is_signed = 0;
+	is_signed = false;
 	std::cout << "AForm printed." << std::endl;
 }
 
@@ -39,7 +39,7 @@ AForm::AForm(std::string nome, int gsign, int gexec) : name(nome),
 		throw AForm::GradeTooHighException();
 	else if (gsign > 150 || gexec > 150)
 		throw AForm::GradeTooLowException();
-	is_signed = 0;
+	is_signed = false;
 }
 // =============================================================================
 
@@ -71,7 +71,7 @@ void AForm::beSigned(Bureaucrat const &b)
 	if (b.getGrade() > this->getRequiredSigningGrade())
 		throw AForm::GradeTooLowException();
 	else
-		this->is_signed = 1;
+		this->is_signed = true;
 }
 // =============================================================================
 
@@ -102,8 +102,16 @@ void AForm::execute(Bureaucrat const &executor) const
 	else
 		this->executer();
 }
+// =============================================================================
 
-
+// Setter for the derived classes ==============================================
+void AForm::setter(std::string const &nome, bool is_signed, int grade_sign, int grade_exec)
+{
+	this->name = nome;
+	this->is_signed = is_signed;
+	this->grade_sign = grade_sign;
+	this->grade_exec = grade_exec;
+}
 // =============================================================================
 
 // Operator << overload ========================================================

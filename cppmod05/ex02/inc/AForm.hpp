@@ -13,16 +13,17 @@ class Bureaucrat;
 class AForm
 {
 	private:
-		std::string const name;
+		std::string name;
 		bool is_signed;
-		int const grade_sign;
-		int const grade_exec;
+		int grade_sign;
+		int grade_exec;
+		std::string target;
 	public:
 	// Orthodox Canonical Form
 		AForm();
 		AForm(AForm const &other);
 		AForm &operator=(AForm const &other);
-		~AForm();
+		virtual ~AForm();
 	// Constructor with input
 		AForm(std::string nome, int gsign, int gexec);
 	// Getters
@@ -50,7 +51,10 @@ class AForm
 		};
 	// Execute the Form
 		void execute(Bureaucrat const &executor) const;
-		virtual void executer() const;
+	protected:
+		virtual void executer() const = 0;
+	// Setter for the derived classes
+		virtual void setter(std::string const &nome, bool is_signed, int grade_sign, int grade_exec);
 };
 
 // Operator << overload

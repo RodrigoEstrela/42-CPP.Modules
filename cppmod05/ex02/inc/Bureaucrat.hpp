@@ -42,6 +42,8 @@ class Bureaucrat
 			public:
 				const char *what() const throw();
 		};
+	// Execute Form
+		void executeForm(AForm const &form);
 };
 
 // Operator << overload

@@ -100,6 +100,25 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 }
 // =============================================================================
 
+// Execute Form ================================================================
+void	Bureaucrat::executeForm(const AForm &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	}
+	catch (AForm::GradeTooLowException &e)
+	{
+		std::cout << this->getName() << " couldn't execute because: " << e.what() << std::endl;
+	}
+	catch (AForm::FormUnsignedException &e)
+	{
+		std::cout << this->getName() << " couldn't execute because: " << e.what() << std::endl;
+	}
+}
+// =============================================================================
+
 // Operator << overload ========================================================
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
 {

@@ -6,7 +6,8 @@
 #define INC_42_CPP_MODULES_SHRUBBERRYCREATIONFORM_H
 
 #include <fstream>
-#include"../inc/AForm.hpp"
+#include <iostream>
+#include"AForm.hpp"
 
 class ShrubberyCreationForm : public AForm
 {

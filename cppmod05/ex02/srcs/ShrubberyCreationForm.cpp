@@ -8,6 +8,7 @@
 ShrubberyCreationForm::ShrubberyCreationForm()
 {
 	this->setter("ShrubberyCreationForm", false, 145, 37);
+	this->target = "Default";
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other)
@@ -18,6 +19,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other)
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
 	this->setter(other.getName(), other.getStatus(), other.getRequiredSigningGrade(), other.getRequiredExecGrade());
+	this->target = other.target;
 	return *this;
 }
 

@@ -1,5 +1,6 @@
 SRCS	=	main.cpp Bureaucrat.cpp AForm.cpp \
-			ShrubberyCreationForm.cpp \
+			ShrubberyCreationForm.cpp RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp \
 
 OBJS	=	$(addprefix objs/,$(SRCS:.cpp=.o))
 

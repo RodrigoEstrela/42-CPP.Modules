@@ -78,7 +78,7 @@ void Bureaucrat::signForm(AForm &f) const
 	try
 	{
 		f.beSigned(*this);
-		std::cout << this->getName() << " signed " << f.getName() << std::endl;
+		std::cout << this->getName() << GREEN " signed " << f.getName() << RESET << std::endl;
 	}
 	catch (AForm::GradeTooLowException &e)
 	{
@@ -91,12 +91,12 @@ void Bureaucrat::signForm(AForm &f) const
 // Class Exceptions ============================================================
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Grade Too High!";
+	return RED "Grade Too High!" RESET;
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Grade Too Low!";
+	return RED "Grade Too Low!" RESET;
 }
 // =============================================================================
 
@@ -106,7 +106,7 @@ void	Bureaucrat::executeForm(const AForm &form)
 	try
 	{
 		form.execute(*this);
-		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+		std::cout << this->getName() << GREEN " executed " << form.getName() << RESET << std::endl;
 	}
 	catch (AForm::GradeTooLowException &e)
 	{
@@ -122,7 +122,7 @@ void	Bureaucrat::executeForm(const AForm &form)
 // Operator << overload ========================================================
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
 {
-	out << bureaucrat.getName() << "'s grade is: " << bureaucrat.getGrade() << ".";
+	out << bureaucrat.getName() << "'s grade is: " BLUE << bureaucrat.getGrade() << "." RESET;
 	return out;
 }
 // =============================================================================

@@ -78,17 +78,17 @@ void AForm::beSigned(Bureaucrat const &b)
 // Class Exceptions ============================================================
 const char *AForm::GradeTooHighException::what() const throw()
 {
-	return "Grade Too High!";
+	return RED"Grade Too High!"RESET;
 }
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-	return "Grade Too Low!";
+	return RED"Grade Too Low!"RESET;
 }
 
 const char *AForm::FormUnsignedException::what() const throw()
 {
-	return "The Form is UNSIGNED!";
+	return RED"The Form is UNSIGNED!"RESET;
 }
 // =============================================================================
 
@@ -117,9 +117,9 @@ void AForm::setter(std::string const &nome, bool is_signed, int grade_sign, int 
 // Operator << overload ========================================================
 std::ostream &operator<<(std::ostream &out, const AForm &f)
 {
-	out << "Name: " << f.getName() << std::endl << "Status: " << f.getStatus() << std::endl <<
-	"Required grade for signing: " << f.getRequiredSigningGrade() << std::endl <<
-	"Required grade for executing: " << f.getRequiredExecGrade();
+	out << "Name: " BLUE << f.getName() << std::endl <<RESET "Status: " YELLOW << f.getStatus() << std::endl <<
+	RESET "Required grade for signing: " BLUE << f.getRequiredSigningGrade() << std::endl << RESET <<
+	"Required grade for executing: " YELLOW << f.getRequiredExecGrade() << RESET;
 	return out;
 }
 // =============================================================================

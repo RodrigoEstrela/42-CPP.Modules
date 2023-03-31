@@ -12,7 +12,7 @@ int main()
 {
 	try // sign: 145 exec: 137
 	{
-		Bureaucrat b1("Senhor executor burocrata", 150);
+		Bureaucrat b1("Senhor executor burocrata", 137);
 		AForm *f1 = new ShrubberyCreationForm("home");
 		std::cout << *f1 << std::endl << std::endl;
 		b1.signForm(*f1);
@@ -39,7 +39,7 @@ int main()
 
 	try // sign: 72 exec: 45
 	{
-		Bureaucrat b1("Senhor doutor", 36);
+		Bureaucrat b1("Senhor doutor", 45);
 		AForm *f1 = new RobotomyRequestForm("paciente");
 		std::cout << *f1 << std::endl << std::endl;
 		b1.signForm(*f1);
@@ -66,7 +66,7 @@ int main()
 
 	try // sign: 25 exec: 5
 	{
-		Bureaucrat b1("Burocrata de alto nivel", 3);
+		Bureaucrat b1("Burocrata de alto nivel", 5);
 		AForm *f1 = new PresidentialPardonForm("krikit warrior");
 		std::cout << *f1 << std::endl << std::endl;
 		b1.signForm(*f1);

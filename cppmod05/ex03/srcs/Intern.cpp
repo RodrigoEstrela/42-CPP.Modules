@@ -54,6 +54,6 @@ AForm *Intern::makeForm(std::string name, std::string target)
 // Class exception =============================================================
 const char *Intern::InvalidFormType::what() const throw()
 {
-	return RED "Invalid type form" RESET;
+	return RED "Invalid form type." RESET;
 }
 // =============================================================================

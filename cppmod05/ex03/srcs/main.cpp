@@ -11,11 +11,12 @@
 
 int main()
 {
+	// SHRUBBERY CREATION FORM =================================================
+	AForm* scf = NULL;
 	try
 	{
 		Intern someRandomIntern;
-		AForm* scf;
-		scf = someRandomIntern.makeForm("shrubbery creation", "home");
+		scf = someRandomIntern.makeForm("shubbery creation", "home");
 
 		Bureaucrat b1("jardineiro", 137);
 		b1.signForm(*scf);
@@ -26,29 +27,53 @@ int main()
 	{
 		std::cout << "Failed because: " << e.what() << std::endl;
 	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
+		delete scf;
+	}
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+		delete scf;
+	}
+	// =========================================================================
 
+	// ROBOTOMY REQUEST FORM ===================================================
 	std::cout << std::endl;
+	AForm* rrf;
 	try
 	{
 		Intern someRandomIntern;
-		AForm* rqf;
-		rqf = someRandomIntern.makeForm("robotomy request", "Bender");
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 
 		Bureaucrat b1("DoctorRobotomizer", 45);
-		b1.signForm(*rqf);
-		b1.executeForm(*rqf);
-		delete rqf;
+		b1.signForm(*rrf);
+		b1.executeForm(*rrf);
+		delete rrf;
 	}
 	catch (Intern::InvalidFormType &e)
 	{
 		std::cout << "Failed because: " << e.what() << std::endl;
 	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
+		delete rrf;
+	}
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+		delete rrf;
+	}
+	// =========================================================================
 
+	// PRESIDENTIAL PARDON FORM ================================================
 	std::cout << std::endl;
+	AForm* ppf;
 	try
 	{
 		Intern someRandomIntern;
-		AForm* ppf;
 		ppf = someRandomIntern.makeForm("presidential pardon", "condemned");
 
 		Bureaucrat b1("Presidente", 5);
@@ -60,12 +85,24 @@ int main()
 	{
 		std::cout << "Failed because: " << e.what() << std::endl;
 	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
+		delete ppf;
+	}
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+		delete ppf;
+	}
+	// =========================================================================
 
+	// WRONG FORM ==============================================================
 	std::cout << std::endl;
+	AForm* wrong;
 	try
 	{
 		Intern someRandomIntern;
-		AForm* wrong;
 		wrong = someRandomIntern.makeForm("wrong", "doesn't really matter");
 
 		Bureaucrat b1("burocrata", 1);
@@ -77,4 +114,15 @@ int main()
 	{
 		std::cout << "Failed because: " << e.what() << std::endl;
 	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
+		delete wrong;
+	}
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+		delete wrong;
+	}
+	// =========================================================================
 }

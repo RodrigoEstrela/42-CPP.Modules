@@ -7,7 +7,7 @@
 // Orthodox Canonical Form =====================================================
 Form::Form() : name("formulary"), grade_sign(35), grade_exec(15)
 {
-	is_signed = 0;
+	is_signed = false;
 	std::cout << "Form printed." << std::endl;
 }
 
@@ -39,7 +39,7 @@ grade_sign(gsign), grade_exec(gexec)
 		throw Form::GradeTooHighException();
 	else if (gsign > 150 || gexec > 150)
 		throw Form::GradeTooLowException();
-	is_signed = 0;
+	is_signed = false;
 }
 // =============================================================================
 
@@ -71,7 +71,7 @@ void Form::beSigned(Bureaucrat const &b)
 	if (b.getGrade() > this->getRequiredSigningGrade())
 		throw Form::GradeTooLowException();
 	else
-		this->is_signed = 1;
+		this->is_signed = true;
 }
 // =============================================================================
 

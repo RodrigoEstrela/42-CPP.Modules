@@ -95,7 +95,7 @@ const char *AForm::FormUnsignedException::what() const throw()
 // Execute the Form ============================================================
 void AForm::execute(Bureaucrat const &executor) const
 {
-	if (this->is_signed == 0)
+	if (!this->is_signed)
 		throw AForm::FormUnsignedException();
 	else if (executor.getGrade() > this->getRequiredExecGrade())
 		throw AForm::GradeTooLowException();

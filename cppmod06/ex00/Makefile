@@ -2,7 +2,7 @@ SRCS	=	main.cpp ScalarConverter.cpp \
 
 OBJS	=	$(addprefix objs/,$(SRCS:.cpp=.o))
 
-CPPFLAGS	=	c++ -Wall -Wextra -Werror -std=c++98
+CPPFLAGS	=	c++ -Wall -Wextra -Werror -std=c++98 -g
 
 RM		=	rm -f
 

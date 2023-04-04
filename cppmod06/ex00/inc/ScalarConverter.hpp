@@ -7,23 +7,54 @@
 
 #include <iostream>
 #include <sstream>
+#include <string>
+#include <cstdlib>
+#include <iomanip>
+#include <cstdio>
+#include <cctype>
+#include <stdexcept>
+#include <cmath>
+#include <limits>
+
+enum
+{
+	CHAR = 1,
+	INT = 2,
+	FLOAT = 3,
+	DOUBLE = 4
+};
 
 class ScalarConverter
 {
 	private:
-		static char		attribute_char;
-		static int		attribute_int;
-		static float	attribute_float;
-		static double	attribute_double;
+	// Orthodox Canonical Form
 		ScalarConverter();
 		ScalarConverter(ScalarConverter const &other);
-//		ScalarConverter &operator=(ScalarConverter const &other);
+		ScalarConverter &operator=(ScalarConverter const &other);
 		~ScalarConverter();
 	public:
-	// Convert method
-		static void convert(std::string cpp_literal);
-	// Print method
+	// Attributes to hold conversion results
+		static char		_char;
+		static int		_checkdisplayble;
+		static int		_int;
+		static float	_float;
+		static double	_double;
+	// Convert methods
+		static void convert_from_char(std::string const &str);
+		static void convert_from_int(std::string const &str);
+		static void convert_from_float(std::string const &str);
+		static void convert_from_double(std::string const &str);
+		static void convert(std::string const &cpp_literal);
+	// Show values
 		static void show_values();
+	// Get Literal Type
+		static int getLiteralType(const std::string &str);
+	// Class Exceptions
+		class InvalidInput : std::exception
+		{
+			public:
+				const char *what() const throw();
+		};
 };
 
 #endif //INC_42_CPP_MODULES_SCALARCONVERTER_H

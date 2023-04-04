@@ -32,13 +32,15 @@ class ScalarConverter
 		ScalarConverter(ScalarConverter const &other);
 		ScalarConverter &operator=(ScalarConverter const &other);
 		~ScalarConverter();
-	public:
 	// Attributes to hold conversion results
 		static char		_char;
-		static int		_checkdisplayble;
 		static int		_int;
 		static float	_float;
 		static double	_double;
+		static int 		_checkchar;
+		static int 		_checkint;
+		static int 		_checkfloat;
+	public:
 	// Convert methods
 		static void convert_from_char(std::string const &str);
 		static void convert_from_int(std::string const &str);

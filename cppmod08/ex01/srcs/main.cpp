@@ -35,7 +35,6 @@ int main()
 			sp.addNumber(9);
 			sp.addNumber(11);
 			// ADD MORE NUMBERS TO CATCH EXCEPTION
-//		sp.addNumber(42);
 			std::cout << sp.shortestSpan() << std::endl;
 			std::cout << sp.longestSpan() << std::endl;
 		}

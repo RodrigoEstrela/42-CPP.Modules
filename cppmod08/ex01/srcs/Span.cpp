@@ -58,7 +58,7 @@ int Span::shortestSpan()
     std::sort(storage.begin(), storage.end());
 
     int shortest_span = longestSpan();
-    for (unsigned int i = 0; i < storage.size(); i++)
+    for (unsigned int i = 0; i < storage.size() - 1; i++)
         if (storage[i + 1] - storage[i] < shortest_span && storage[i + 1] - storage[i] >= 0)
             shortest_span = storage[i + 1] - storage[i];
     return shortest_span;

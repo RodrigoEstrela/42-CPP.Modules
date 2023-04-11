@@ -35,12 +35,12 @@ class Span
     // Method to add random numbers within a range to the container
         void addRandomNumbers(int start, long int end, int how_much);
     // Class Exceptions
-        class ReachedMaxStorage : std::exception
+        class ReachedMaxStorage : public std::exception
         {
             public:
                 const char *what() const throw();
         };
-        class NoPossibleSpan : std::exception
+        class NoPossibleSpan : public std::exception
         {
             public:
                 const char *what() const throw();

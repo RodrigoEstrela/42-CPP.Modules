@@ -1,4 +1,4 @@
-SRCS	=	main.cpp \
+SRCS	=	main.cpp BitcoinExchange.cpp \
 
 OBJS	=	$(addprefix objs/,$(SRCS:.cpp=.o))
 

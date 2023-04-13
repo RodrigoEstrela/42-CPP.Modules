@@ -18,6 +18,10 @@ enum
 	ADD = 43
 };
 
+#define RED   "\033[1;31m"
+#define GREEN "\033[1;32m"
+#define RESET "\033[0m"
+
 class RPN
 {
 		std::stack<std::string> rpn_sequence;
@@ -38,12 +42,11 @@ class RPN
 		void calculate();
 		void result(std::string input);
 	// Class Exceptions
-	class InputError : public std::exception
-	{
-		public:
-			const char *what() const throw();
-	};
+		class InputError : public std::exception
+		{
+			public:
+				const char *what() const throw();
+		};
 };
-
 
 #endif //INC_42_CPP_MODULES_RPN_HPP

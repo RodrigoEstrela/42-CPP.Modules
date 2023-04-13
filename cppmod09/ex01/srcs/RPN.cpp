@@ -55,9 +55,9 @@ void RPN::fill_stack(std::string input)
 void RPN::isValidInput(std::string input)
 {
 	int i = 1;
+	fill_stack(input);
 	int size = rpn_sequence.size();
 
-	fill_stack(input);
 	while (!rpn_sequence.empty())
 	{
 		std::string element = rpn_sequence.top();
@@ -83,11 +83,18 @@ bool isOperand(std::string elem)
 		return false;
 }
 
+bool isDigit(std::string elem)
+{
+	if (elem[0] >= '0' && elem[0] <= '9')
+		return true;
+	else
+		return false;
+}
+
 void RPN::calculate()
 {
 	if (rpn_sequence.size() < 3)
-		return;
-
+		throw InputError();
 	std::string placeholder = rpn_sequence.top();
 	operand = static_cast<int>(placeholder[0]);
 	rpn_sequence.pop();
@@ -134,13 +141,15 @@ void RPN::result(std::string input)
 		if (isOperand(rpn_sequence.top()))
 			calculate();
 	}
-	std::cout << rpn_sequence.top() << std::endl;
+	if (rpn_sequence.size() != 1)
+		throw InputError();
+	std::cout << GREEN << rpn_sequence.top() << RESET << std::endl;
 }
 // =============================================================================
 
 // Class Exceptions ============================================================
 const char *RPN::InputError::what() const throw()
 {
-	return "Error";
+	return RED "Error" RESET;
 }
 // =============================================================================

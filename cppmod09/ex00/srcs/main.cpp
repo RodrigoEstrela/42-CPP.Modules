@@ -6,11 +6,18 @@
 
 int main(int ac, char **av)
 {
-	if (ac == 2)
+	try
 	{
-		BitcoinExchange btc_exc;
-		btc_exc.get_value(av[1]);
+		if (ac == 2)
+		{
+			BitcoinExchange btc_exc;
+			btc_exc.get_value(av[1]);
+		}
+		else
+			throw BitcoinExchange::CouldntOpenFile();
 	}
-	else
-		std::cout << "Please provide an input file." << std::endl;
+	catch (BitcoinExchange::CouldntOpenFile &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

@@ -47,60 +47,52 @@ void BitcoinExchange::fill_database() // Fill the database ---------------------
 	}
 	file.close();
 }
-
-void BitcoinExchange::show_database() // Show the database ---------------------
-{
-	for(dictionary::iterator it = data.begin(); it != data.end(); ++it)
-		std::cout << it->first << " : " << it->second << std::endl;
-}
-
-std::string BitcoinExchange::get_from_key(std::string key)
-{
-	if (data.find(key) != data.end())
-		return "ola";
-	else
-		return "adeus";
-}
 // =============================================================================
 
-// Test ========================================================================
-void isValidDate(std::string dateStr)
+// Validate ====================================================================
+void BitcoinExchange::isValidDate(std::string dateStr)
 {
 	if (dateStr.length() != 10)
-		throw BitcoinExchange::InvalidDate();
+		throw InvalidDate();
 	if (dateStr[4] != '-' || dateStr[7] != '-')
-		throw BitcoinExchange::InvalidDate();
-	std::string yearStr = dateStr.substr(0, 4);
-	std::string monthStr = dateStr.substr(5, 2);
-	std::string dayStr = dateStr.substr(8, 2);
+		throw InvalidDate();
+	std::string yearStr = dateStr.substr(0, 4),
+	 			monthStr = dateStr.substr(5, 2),
+	 			dayStr = dateStr.substr(8, 2);
 	int year, month, day;
 	std::istringstream(yearStr) >> year;
 	std::istringstream(monthStr) >> month;
 	std::istringstream(dayStr) >> day;
 	if (year < 0 || year > 9999 || month < 1 || month > 12 || day < 1 || day > 31)
-		throw BitcoinExchange::InvalidDate();
+		throw InvalidDate();
 	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
-		throw BitcoinExchange::InvalidDate();
-	if (month == 2) {
-		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+		throw InvalidDate();
+	if (month == 2)
+	{
+		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+		{
 			if (day > 29)
-				throw BitcoinExchange::InvalidDate();
-		} else {
+				throw InvalidDate();
+		}
+		else
+		{
 			if (day > 28)
-				throw BitcoinExchange::InvalidDate();
+				throw InvalidDate();
 		}
 	}
 }
 
-void isValidQuantity(float quantity)
+void BitcoinExchange::isValidQuantity(float quantity)
 {
 	if (quantity < 0)
-		throw BitcoinExchange::NegativeNumber();
+		throw NegativeNumber();
 	else if (quantity > 1000 || quantity > (float)std::numeric_limits<int>::max())
-		throw BitcoinExchange::TooLargeNumber();
+		throw TooLargeNumber();
 }
+// =============================================================================
 
-int date_diff_in_days(const std::string& date1, const std::string& date2)
+// Closest date ================================================================
+int BitcoinExchange::date_diff_in_days(const std::string &date1, const std::string &date2)
 {
 	int year1, month1, day1, year2, month2, day2;
 	std::istringstream iss1(date1);
@@ -111,22 +103,20 @@ int date_diff_in_days(const std::string& date1, const std::string& date2)
 	int days_in_month[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	int leap_days_in_month[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	int diff_days = 0;
-	for (int y = year1; y < year2; y++) {
-		if (y % 4 == 0) {
+	for (int y = year1; y < year2; y++)
+	{
+		if (y % 4 == 0)
 			diff_days += 366;
-		} else {
+		else
 			diff_days += 365;
-		}
 	}
-	int* days_in_curr_month = (year2 % 4 == 0) ? leap_days_in_month : days_in_month;
-	for (int m = 1; m < month2; m++) {
+	int *days_in_curr_month = (year2 % 4 == 0) ? leap_days_in_month : days_in_month;
+	for (int m = 1; m < month2; m++)
 		diff_days += days_in_curr_month[m];
-	}
 	diff_days += day2;
 	days_in_curr_month = (year1 % 4 == 0) ? leap_days_in_month : days_in_month;
-	for (int m = 1; m < month1; m++) {
+	for (int m = 1; m < month1; m++)
 		diff_days -= days_in_curr_month[m];
-	}
 	diff_days -= day1;
 	return diff_days;
 }
@@ -146,6 +136,7 @@ std::string BitcoinExchange::get_closest_lower_date(const std::string& date)
 	}
 	return closest_key;
 }
+// =============================================================================
 
 void BitcoinExchange::line_by_line(std::string date, float quantity)
 {
@@ -161,11 +152,7 @@ void BitcoinExchange::line_by_line(std::string date, float quantity)
 	{
 		std::cout << e.what() << date << std::endl;
 	}
-	catch (BitcoinExchange::NegativeNumber &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (BitcoinExchange::TooLargeNumber &e)
+	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
@@ -173,52 +160,51 @@ void BitcoinExchange::line_by_line(std::string date, float quantity)
 
 void BitcoinExchange::get_value(char *input_file)
 {
-	std::string date, quantity;
-
-	std::ifstream file (input_file);
-	if (!file.is_open())
-		throw CouldntOpenFile();
-	// -------------------------------------------------------------------------
-	std::string line;
-	std::getline(file, line);
-	while (std::getline(file, line))
+	try
 	{
-		std::stringstream ss(line);
-		std::string placeholder;
-
-		std::getline(ss, date, '|');
-		if (std::getline(ss, placeholder, '|'))
-			quantity  = placeholder;
-		else
-			quantity = "No Value";
-		// ---------------------------------------------------------------------
-		try
+		std::ifstream file (input_file);
+		if (!file.is_open())
+			throw CouldntOpenFile();
+		// -------------------------------------------------------------------------
+		std::string line, placeholder, date, quantity;
+		std::getline(file, line);
+		while (std::getline(file, line))
 		{
-			float quant;
-			if (quantity == "No Value")
-				throw BadInput();
+			std::stringstream ss(line);
+			std::getline(ss, date, '|');
+			if (std::getline(ss, placeholder, '|'))
+				quantity  = placeholder;
 			else
-				quant = static_cast<float>(atof(quantity.c_str()));
-			date = date.substr(0, date.length() - 1);
-			line_by_line(date, quant);
+				quantity = "No Value";
+			// ---------------------------------------------------------------------
+			try
+			{
+				float quant;
+				if (quantity == "No Value")
+					throw BadInput();
+				else
+					quant = static_cast<float>(atof(quantity.c_str()));
+				date = date.substr(0, date.length() - 1);
+				line_by_line(date, quant);
+			}
+			catch (std::exception &e)
+			{
+				std::cout << e.what() << date << std::endl;
+			}
 		}
-		catch (CouldntOpenFile &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << date << std::endl;
-		}
+		file.close();
 	}
-	file.close();
+	catch (CouldntOpenFile &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }
 // =============================================================================
 
 // Class Exceptions ============================================================
 const char *BitcoinExchange::CouldntOpenFile::what() const throw()
 {
-	return "Error opening file.";
+	return "Error: could not open file.";
 }
 
 const char *BitcoinExchange::InvalidDate::what() const throw()

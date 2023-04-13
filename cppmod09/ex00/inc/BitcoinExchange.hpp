@@ -28,10 +28,13 @@ class BitcoinExchange
 		~BitcoinExchange();
 	// DataBase
 		void fill_database();
-		void show_database();
-	// Test
+	// Validate
+		void isValidDate(std::string dateStr);
+		void isValidQuantity(float quantity);
+	// Closest date
+		int date_diff_in_days(const std::string &date1, const std::string &date2);
 		std::string get_closest_lower_date(const std::string& date);
-		std::string get_from_key(std::string key);
+	// Evaluate
 		void line_by_line(std::string date, float q);
 		void get_value(char *input_file);
 	// Class exceptions

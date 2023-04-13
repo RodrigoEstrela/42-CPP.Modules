@@ -83,14 +83,6 @@ bool isOperand(std::string elem)
 		return false;
 }
 
-bool isDigit(std::string elem)
-{
-	if (elem[0] >= '0' && elem[0] <= '9')
-		return true;
-	else
-		return false;
-}
-
 void RPN::calculate()
 {
 	if (rpn_sequence.size() < 3)

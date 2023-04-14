@@ -94,30 +94,30 @@ void BitcoinExchange::isValidQuantity(float quantity)
 // Closest date ================================================================
 int BitcoinExchange::date_diff_in_days(const std::string &date1, const std::string &date2)
 {
-	int year1, month1, day1, year2, month2, day2;
-	std::istringstream iss1(date1);
-	std::istringstream iss2(date2);
-	char delimiter;
-	iss1 >> year1 >> delimiter >> month1 >> delimiter >> day1;
-	iss2 >> year2 >> delimiter >> month2 >> delimiter >> day2;
-	int days_in_month[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	int leap_days_in_month[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	int diff_days = 0;
-	for (int y = year1; y < year2; y++)
-	{
-		if (y % 4 == 0)
-			diff_days += 366;
-		else
-			diff_days += 365;
-	}
-	int *days_in_curr_month = (year2 % 4 == 0) ? leap_days_in_month : days_in_month;
-	for (int m = 1; m < month2; m++)
-		diff_days += days_in_curr_month[m];
-	diff_days += day2;
-	days_in_curr_month = (year1 % 4 == 0) ? leap_days_in_month : days_in_month;
-	for (int m = 1; m < month1; m++)
-		diff_days -= days_in_curr_month[m];
-	diff_days -= day1;
+	struct std::tm time1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	struct std::tm time2 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	std::istringstream ss1(date1);
+	std::istringstream ss2(date2);
+	std::memset(&time1, 0, sizeof(struct std::tm));
+	std::memset(&time2, 0, sizeof(struct std::tm));
+	ss1 >> time1.tm_year;
+	ss1.ignore(1);
+	ss1 >> time1.tm_mon;
+	ss1.ignore(1);
+	ss1 >> time1.tm_mday;
+	ss2 >> time2.tm_year;
+	ss2.ignore(1);
+	ss2 >> time2.tm_mon;
+	ss2.ignore(1);
+	ss2 >> time2.tm_mday;
+	time1.tm_year -= 1900;
+	time1.tm_mon--;
+	time2.tm_year -= 1900;
+	time2.tm_mon--;
+	std::time_t t1 = std::mktime(&time1);
+	std::time_t t2 = std::mktime(&time2);
+	double diff_seconds = std::difftime(t1, t2);
+	int diff_days = (int)std::abs(diff_seconds / (60 * 60 * 24));
 	return diff_days;
 }
 
@@ -125,7 +125,8 @@ std::string BitcoinExchange::get_closest_lower_date(const std::string& date)
 {
 	std::string closest_key = "";
 	int min_diff = std::numeric_limits<int>::max();
-	for (std::map<std::string, std::string>::iterator it = data.begin(); it != data.end(); ++it)
+	std::map<std::string, std::string>::iterator it;
+	for (it = data.begin() ; it != data.end(); ++it)
 	{
 		const std::string& key = it->first;
 		if (key <= date && date_diff_in_days(key, date) < min_diff)
@@ -166,8 +167,11 @@ void BitcoinExchange::get_value(char *input_file)
 		if (!file.is_open())
 			throw CouldntOpenFile();
 		// -------------------------------------------------------------------------
-		std::string line, placeholder, date, quantity;
-		std::getline(file, line);
+		std::string line, placeholder, date, quantity, fl;
+		std::ifstream check_fl(input_file);
+		std::getline(check_fl, fl);
+		if (fl == "date | value")
+			std::getline(file, line);
 		while (std::getline(file, line))
 		{
 			std::stringstream ss(line);

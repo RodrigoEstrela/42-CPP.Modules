@@ -4,6 +4,18 @@
 
 #include "../inc/PmergeMe.hpp"
 
+// Getters for containers =====================================================
+std::vector<int> & PmergeMe::get_v_container()
+{
+	return v_container;
+}
+
+std::deque<int> &PmergeMe::get_d_container()
+{
+	return d_container;
+}
+// ============================================================================
+
 // Orthodox Canonical Form ====================================================
 PmergeMe::PmergeMe()
 {
@@ -106,16 +118,16 @@ void PmergeMe::d_merge_insert_sort()
 // Class Exceptions ===========================================================
 const char *PmergeMe::InvalidArgument::what() const throw()
 {
-    return "Error: invalid argument.";
+    return RED "Error: invalid argument." RESET;
 }
 
 const char *PmergeMe::HasDuplicate::what() const throw()
 {
-    return "Error: has duplicates.";
+    return RED "Error: has duplicates." RESET;
 }
 
 const char *PmergeMe::HasNegative::what() const throw()
 {
-    return "Error: has negative number.";
+    return RED "Error: has negative number." RESET;
 }
 // ============================================================================

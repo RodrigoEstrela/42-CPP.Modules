@@ -14,6 +14,8 @@
 #include <cstdlib>
 #include <limits>
 #include <iomanip>
+#include <ctime>
+#include <cstring>
 
 typedef std::map<std::string, std::string> dictionary;
 
@@ -33,7 +35,7 @@ class BitcoinExchange
 		void isValidQuantity(float quantity);
 	// Closest date
 		int date_diff_in_days(const std::string &date1, const std::string &date2);
-		std::string get_closest_lower_date(const std::string& date);
+		std::string get_closest_lower_date(const std::string &date);
 	// Evaluate
 		void line_by_line(std::string date, float q);
 		void get_value(char *input_file);
@@ -66,7 +68,7 @@ class BitcoinExchange
 };
 
 template<typename K, typename V>
-std::map<K, V> reverseMap(const std::map<K, V>& originalMap)
+std::map<K, V> reverseMap(const std::map<K, V> &originalMap)
 {
 	std::map<K, V> reversedMap;
 	typename std::map<K, V>::const_reverse_iterator rit;
